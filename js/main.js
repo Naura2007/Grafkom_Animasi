@@ -45,7 +45,8 @@ let personX = 500;
 let personY = 550;
 
 const PERSON_SIZE = 40;
-const PERSON_SPEED = 50;
+const PERSON_SPEED = 100;
+let speed = 100;
 
 function drawPerson() {
   // Scale berdasarkan jarak dari horizon
@@ -57,6 +58,7 @@ function drawPerson() {
     (maxScale - minScale);
 
   const size = PERSON_SIZE * scale;
+  speed = PERSON_SPEED * scale;
 
   drawRect(
     personX - size / 2,
@@ -82,16 +84,16 @@ window.addEventListener("keyup", (e) => {
 function updatePersonTranslation(dt) {
   // Use optional chaining or fallback to prevent errors if keys is empty
   if (keys["arrowleft"]) {
-    personX -= PERSON_SPEED * dt;
+    personX -= speed * dt;
   }
   if (keys["arrowup"]) {
-    personY -= PERSON_SPEED * dt; // Note: -dt moves UP toward 0 in WebGL 2D/Canvas screen space
+    personY -= speed * dt; // Note: -dt moves UP toward 0 in WebGL 2D/Canvas screen space
   }
   if (keys["arrowdown"]) {
-    personY += PERSON_SPEED * dt; // Note: +dt moves DOWN
+    personY += speed * dt; // Note: +dt moves DOWN
   }
   if (keys["arrowright"]) {
-    personX += PERSON_SPEED * dt;
+    personX += speed * dt;
   }
 
   // Clamping boundaries
