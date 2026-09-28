@@ -19,11 +19,12 @@ const HOUSE_WINDOW_COLOR = [0.98, 0.93, 0.66, 1];
 const TREE_LEAF_COLOR = [0.27, 0.62, 0.24, 1];
 const TREE_TRUNK_COLOR = [0.30, 0.20, 0.10, 1];
 const BIRD_COLOR = [0.05, 0.05, 0.05, 1];
+PADDY_COLOR = [0.05, 0.05, 0.05, 1];
 
 // garis cakrawala: tempat langit bertemu tanah, dan alas gunung menempel di sini.
 // dipakai berkali-kali di banyak fungsi, makanya dijadikan satu konstanta
 // supaya kalau diubah, semua elemen ikut menyesuaikan otomatis.
-const HORIZON_Y = 300;
+const HORIZON_Y = 330;
 
 // -----------------------------------------------------------------------------
 // LANGIT: cuma persegi panjang selebar & setinggi bagian atas kanvas.
@@ -145,4 +146,56 @@ function drawBirds() {
   drawBird(120, 90, 18);
   drawBird(165, 70, 14);
   drawBird(90, 130, 12);
+}
+
+function drawPaddy(cx, cy, size) {
+
+  // garis kiri
+  drawLine(
+    cx - size,
+    cy - size * 0.4,
+    cx,
+    cy + size,
+    2.5,
+    PADDY_COLOR
+  );
+
+  // garis kanan
+  drawLine(
+    cx,
+    cy + size,
+    cx + size,
+    cy - size * 0.4,
+    2.5,
+    PADDY_COLOR
+  );
+}
+
+function drawPaddyField() {
+
+  // const startX = 80;
+  // const startY = 370;
+
+  // Baris paling dekat horizon
+  drawPaddy(145, 370, 8);
+  drawPaddy(205, 385, 10);
+  drawPaddy(270, 375, 8);
+  drawPaddy(335, 395, 10);
+
+  // Baris kedua
+  drawPaddy(110, 420, 11);
+  drawPaddy(175, 435, 13);
+  drawPaddy(245, 425, 11);
+  drawPaddy(315, 445, 13);
+
+  // Baris ketiga
+  drawPaddy(85, 480, 14);
+  drawPaddy(155, 495, 16);
+  drawPaddy(225, 485, 15);
+  drawPaddy(295, 510, 17);
+
+  // Baris paling dekat
+  drawPaddy(105, 550, 18);
+  drawPaddy(185, 565, 20);
+  drawPaddy(270, 550, 19);
 }
