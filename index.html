@@ -1,20 +1,40 @@
 <!DOCTYPE html>
+<!--
+  ============================================================
+  TUGAS GRAFIKA KOMPUTER - Duplikasi Gambar dan Animasi (WebGL)
+  Kelompok : [ISI NAMA KELOMPOK]
+  Anggota  : 1. Yasmina Fitri Azaizah - 5025241039
+             2. Naura Rossa Azalia - 5025241042
+  ============================================================
+  Struktur file:
+    js/engine.js     -> setup WebGL, matriks 2D, fungsi gambar primitif
+    js/background.js -> langit, tanah, gunung, jalan, rumah, pohon, burung, sawah
+    js/sun.js        -> matahari dan sinar yang berputar (animasi)
+    js/car.js        -> mobil yang digerakkan keyboard + skala berdasarkan jarak
+    js/main.js       -> render loop yang menyusun semua layer
+  Kontrol: tombol panah (atas/bawah/kiri/kanan) untuk menggerakkan orang.
+-->
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="author" content="Yasmina Fitri Azaizah, Naura Rossa Azalia">
 <title>Tugas Grafika Komputer - Animasi Gambar</title>
 <style>
   html, body { margin: 0; height: 100%; background: #333; display: flex; justify-content: center; align-items: center; }
   canvas { background: #fff; border: 2px solid #000; }
+  /* identitas kelompok, position: fixed supaya tidak menggeser posisi canvas */
+  #identitas { position: fixed; left: 8px; bottom: 8px; color: #ccc; font: 12px sans-serif; }
 </style>
 </head>
 <body>
+<div id="identitas">Yasmina Fitri Azaizah (5025241039) &amp; Naura Rossa Azalia (5025241042)</div>
 <canvas id="glcanvas" width="1000" height="650"></canvas>
 
+<!-- Urutan pemuatan penting: main.js harus paling akhir karena memanggil fungsi dari file lain -->
 <script src="js/engine.js"></script>
 <script src="js/background.js"></script>
-<!-- <script src="js/sun.js"></script> -->
-<!-- <script src="js/person.js"></script> -->
+<script src="js/sun.js"></script>
+<script src="js/car.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
